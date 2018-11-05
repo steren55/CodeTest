@@ -11,7 +11,7 @@ namespace ImageRotate
 
             int oriWid = 2;                 // Width  : Original Image
             int oriHei = 2;                 // Height : Original Image
-            double theta = 180;              // Rotate Angle (degree)
+            double theta = 90;              // Rotate Angle (degree)
             theta = theta*Math.PI/180.0;    // Change (degree) to (radians)
             // Calculate New Image Width & Height
             int newWid = (int)((double)oriWid*Math.Abs(Math.Cos(theta))+(double)oriHei*Math.Abs(Math.Sin(theta)));
@@ -40,14 +40,14 @@ namespace ImageRotate
             Console.WriteLine();
             // Show Rotated Image
             Console.WriteLine("Rotated Image:");
-            double v=0,w=0,x=0,y=0,ii=0,jj=0;
+            double u=0,v=0,x=0,y=0,ii=0,jj=0;
             for (int i=0; i<newHei; i++) {
                 for (int j=0; j<newWid; j++) {
                     // Translation
-                    v=(double)i-(double)(newHei-1)/2.0;
-                    w=(double)j-(double)(newWid-1)/2.0;
+                    u=(double)i-(double)(newHei-1)/2.0;
+                    v=(double)j-(double)(newWid-1)/2.0;
                     // Rotate
-                    Rotate(v, w, ref x, ref y, theta*(-1.0));
+                    Rotate(u, v, ref x, ref y, theta*(-1.0));
                     // Translation
                     x+=((double)(oriWid-1)/2.0);
                     y+=((double)(oriHei-1)/2.0);
@@ -67,9 +67,9 @@ namespace ImageRotate
             #endregion
         }
 
-        static private void Rotate(double v, double w, ref double x, ref double y, double theta) {
-            x = v*Math.Cos(theta)-w*Math.Sin(theta);
-            y = v*Math.Sin(theta)+w*Math.Cos(theta);
+        static private void Rotate(double u, double v, ref double x, ref double y, double theta) {
+            x = u*Math.Cos(theta)-v*Math.Sin(theta);
+            y = u*Math.Sin(theta)+v*Math.Cos(theta);
         }
     }
 }
