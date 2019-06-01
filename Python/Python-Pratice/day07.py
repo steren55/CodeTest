@@ -189,6 +189,52 @@ def fun8():
         time.sleep(0.2)
         str = str[1:]
 
+def fun9():
+    
+    from random import randint
+
+    def gen_code(code_len=4):
+        list = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        code = ""
+        for _ in range(code_len):
+            tmp = list[randint(0, len(list)-1)]
+            code += tmp
+        return code
+
+    print(gen_code())
+    print(gen_code(10))
+    print(gen_code(20))
+
+def fun10():
+    
+    def get_extname(fileName):
+        filename = str(fileName)
+        list = filename.split('.')
+        return list[len(list)-1]
+
+    fileName = "asdsa.dewre.rhhvb.vbf.txt"
+    print("File Name:", fileName)
+    print("Extend Name:", get_extname(fileName))
+
+def fun11():
+
+    def max(list):
+        tmp = list[0]
+        for i in range(1, len(list)-1):
+            if (list[i]>tmp):
+                tmp = list[i]
+        return tmp
+
+    def max2(list):
+        tmp1 = max(list)
+        list.remove(tmp1)
+        tmp2 = max(list)
+        return tmp1, tmp2
+
+    list = [5, 78 ,66, 879, -45, 99, 55]
+    print(list)
+    print(max2(list))
+
 def main():
     # fun1()
     # fun2()
@@ -200,8 +246,19 @@ def main():
 
 # Homework
 # 1.
-    fun8()
+    # fun8()
 
+# 2.
+    fun9()
+    print()
+
+# 3.
+    fun10()
+    print()
+
+# 4.
+    fun11()
+    print()
 
 if __name__ == "__main__":
     main()
