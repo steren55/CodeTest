@@ -235,6 +235,45 @@ def fun11():
     print(list)
     print(max2(list))
 
+def fun12():
+    
+    def is_leap(y):
+        return (y % 4 ==0 and y % 100 != 0) or (y % 400 == 0 and y % 3200 != 0)
+
+    def which_day(yy, mm, dd):
+        day_of_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        days = 0
+        for m in range(0, mm-1):
+            if (m == 1 and is_leap(yy)):
+                days += 29
+            else:
+                days += day_of_month[m]
+        days += dd
+        return days
+
+    def which_day2(year, month, date):
+        """
+        计算传入的日期是这一年的第几天
+
+        :param year: 年
+        :param month: 月
+        :param date: 日
+        :return: 第几天
+        """
+        days_of_month = [
+            [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+            [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        ][is_leap(year)]
+        total = 0
+        for index in range(month - 1):
+            total += days_of_month[index]
+        return total + date
+    
+    print(which_day(1980, 11, 28))
+    print(which_day2(1980, 11, 28))
+    print(which_day(2018, 3, 1))
+    print(which_day2(2018, 3, 1))
+
 def main():
     # fun1()
     # fun2()
@@ -258,6 +297,10 @@ def main():
 
 # 4.
     fun11()
+    print()
+
+# 5.
+    fun12()
     print()
 
 if __name__ == "__main__":
